@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package vghe;
+
+service HapticFeedback {
+  rpc SendDetection (DetectionRequest) returns (DetectionResponse) {}
+}
+
+message DetectionRequest {
+  repeated BoundingBox boxes = 1;
+}
+
+message BoundingBox {
+  string label = 1;
+  float confidence = 2;
+  float x_min = 3;
+  float y_min = 4;
+  float x_max = 5;
+  float y_max = 6;
+}
+
+message DetectionResponse {
+  bool ok = 1;
+  string message = 2;
+}
